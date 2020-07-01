@@ -27,6 +27,7 @@ Rails.application.configure do
 
     config.cache_store = :null_store
   end
+  config.action_controller.perform_caching = true
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
@@ -60,10 +61,6 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
-  config.cache_store = :redis_cache_store, { 
-    expires_in: 1.hour,
-    namespace: 'cache',
-    redis: { host: 'localhost', port: 6379, db: 0 }, 
-  }
+  config.cache_store = :redis_cache_store, { url: ENV['REDIS_URL'] }
   config.session_store :cache_store, key: ENV['APP_SESSION_KEY']
 end

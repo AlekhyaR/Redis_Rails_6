@@ -22,3 +22,15 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+How to test rate limit in development?
+
+In terminal 
+enter bash
+bash-3.2$ for i in {1..8}; do curl -i http://localhost:3000/ >> /dev/null; done
+
+bash-3.2$ less log/development.log | grep "200 OK" | wc -l
+bash-3.2$ 4
+
+bash-3.2$ less log/development.log | grep "429 Too Many Requests" | wc -l
+bash-3.2$ 4 

@@ -57,7 +57,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'redis'
 gem 'hiredis'
-gem 'rack-attack'
 
 
 
